@@ -69,6 +69,13 @@ config CFQ_GROUP_IOSCHED
 	---help---
 	  Enable group IO scheduling in CFQ.
 
+config IOSCHED_ZEN
+ 	tristate "Zen I/O scheduler"
+ 	default y
+ 	---help---
+ 	  FCFS, dispatches are back-inserted, deadlines ensure fairness.
+ 	  Should work best with devices where there is no travel delay.
+ 
 config IOSCHED_BFQ
 	tristate "BFQ I/O scheduler"
 	default n
@@ -121,7 +128,10 @@ choice
 		  The BFQ I/O scheduler aims at distributing the bandwidth
 		  as desired, independently of the disk parameters and with
 		  any workload. It also tries to guarantee low latency to
-		  interactive and soft real-time applications.
+		  interactive and soft real-time application.
+		
+	config DEFAULT_ZEN
+ 		bool "ZEN" if IOSCHED_ZEN=y
 
 	config DEFAULT_NOOP
 		bool "No-op" if IOSCHED_NOOP=y
@@ -139,6 +149,7 @@ config DEFAULT_IOSCHED
 	default "bfq" if DEFAULT_BFQ
 	default "noop" if DEFAULT_NOOP
 	default "fiops" if DEFAULT_FIOPS
+	default "zen" if DEFAULT_ZEN
 
 endmenu
 

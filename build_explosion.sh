@@ -70,7 +70,7 @@ echo -e "Building kernel"
 make -j8 ARCH=arm CROSS_COMPILE=~/arm-eabi-4.9/bin/arm-eabi-
 
 echo -e "$red Compress zip"
-rm -rvf $ZIP/zImage
+rm -rvf $ZIP/tools/zImage
 mv $KERNELT $ZIP/tools
 rm -f $ZIP/*.zip
 
@@ -79,4 +79,4 @@ zip -r Explosion-$VERSION-$DEVICE *
 cd
 BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))
-echo -e "$yellow Construcción completada en $(($DIFF / 60)) minuto(s) y $(($DIFF % 60)) segundos.$nocol"
+echo -e "$yellow Building successful in $(($DIFF / 60)) minutes(s) and $(($DIFF % 60)) seconds.$nocol"

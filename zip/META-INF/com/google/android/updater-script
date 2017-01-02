@@ -1,3 +1,9 @@
+ui_print("   __            _           _             ");
+ui_print("  /__\_  ___ __ | | ___  ___(_) ___  _ __  ");
+ui_print(" /_\ \ \/ / '_ \| |/ _ \/ __| |/ _ \| '_ \ ");
+ui_print("//__  >  <| |_) | | (_) \__ \ | (_) | | | |");
+ui_print("\__/ /_/\_\ .__/|_|\___/|___/_|\___/|_| |_|");
+ui_print("          |_|                              ");
 ui_print("Explosion Kernel For Xiaomi Redmi 2/Prime/Pro");
 
 assert(getprop("ro.product.device") == "HM2014817" ||
@@ -8,7 +14,8 @@ assert(getprop("ro.product.device") == "HM2014817" ||
        getprop("ro.product.device") == "HM2014813" ||
        getprop("ro.product.device") == "HM2014112" ||
        getprop("ro.product.device") == "HM2014811" ||
-       abort("This package is for device: WT88047; this device is " +
+       getprop("ro.product.device") == "wt88047" ||
+       abort("This package is for device: wt88047; this device is " +
              getprop("ro.product.device") + "."););
 
 ui_print("Extracting flashing tools...");

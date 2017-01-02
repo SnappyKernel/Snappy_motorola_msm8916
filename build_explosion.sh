@@ -71,7 +71,7 @@ make -j8 ARCH=arm CROSS_COMPILE=~/arm-eabi-4.9/bin/arm-eabi-
 
 echo -e "$red Compress zip"
 rm -rvf $ZIP/zImage
-mv $KERNELT $ZIP
+mv $KERNELT $ZIP/tools
 rm -f $ZIP/*.zip
 
 cd $ZIP

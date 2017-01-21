@@ -76,6 +76,8 @@ static void mdss_dsi_panel_bl_on_defer_start(struct mdss_dsi_ctrl_pdata *ctrl)
 	}
 }
 
+extern void lazyplug_enter_lazy(bool enter);
+
 static void mdss_dsi_panel_bl_on_defer_wait(struct mdss_dsi_ctrl_pdata *ctrl)
 {
 	struct mdss_panel_info *pinfo;
@@ -840,6 +842,8 @@ static int mdss_dsi_panel_pre_on(struct mdss_panel_data *pdata)
 		return -EINVAL;
 	}
 
+	lazyplug_enter_lazy(false);
+
 	pinfo = &pdata->panel_info;
 	ctrl = container_of(pdata, struct mdss_dsi_ctrl_pdata,
 				panel_data);
@@ -987,6 +991,7 @@ static int mdss_dsi_panel_off(struct mdss_panel_data *pdata)
 		mdss_dsi_panel_cmds_send(ctrl, &ctrl->off_cmds);
 
 	mdss_dsi_panel_off_in_prog_notify(pdata, pinfo);
+	lazyplug_enter_lazy(true);
 
 end:
 	pinfo->blank_state = MDSS_PANEL_BLANK_BLANK;
@@ -2404,3 +2409,4 @@ int mdss_dsi_panel_init(struct device *dev,
 
 	return 0;
 }
+

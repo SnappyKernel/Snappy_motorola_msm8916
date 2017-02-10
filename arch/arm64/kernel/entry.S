@@ -507,7 +507,11 @@ el0_inv:
 	mov	x0, sp
 	mov	x1, #BAD_SYNC
 	mrs	x2, esr_el1
+<<<<<<< HEAD
 	b	bad_mode
+=======
+	b	bad_el0_sync
+>>>>>>> 020d1c5... Linux 3.10.105
 ENDPROC(el0_sync)
 
 	.align	6

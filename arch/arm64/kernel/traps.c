@@ -408,17 +408,13 @@ asmlinkage void bad_el0_sync(struct pt_regs *regs, int reason, unsigned int esr)
 	info.si_code  = ILL_ILLOPC;
 	info.si_addr  = pc;
 
-<<<<<<< HEAD
 	if (esr >> ESR_EL1_EC_SHIFT == ESR_EL1_EC_SERROR) {
 		pr_crit("System error detected. ESR.ISS = %08x\n",
 			esr & 0xffffff);
 		arm64_erp_local_dbe_handler();
 	}
 
-	arm64_notify_die("Oops - bad mode", regs, &info, 0);
-=======
 	force_sig_info(info.si_signo, &info, current);
->>>>>>> 020d1c5... Linux 3.10.105
 }
 
 void __pte_error(const char *file, int line, unsigned long val)

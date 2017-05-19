@@ -2549,7 +2549,6 @@ static int dwc3_cleanup_done_reqs(struct dwc3 *dwc, struct dwc3_ep *dep,
 				break;
 		}while (++i < req->request.num_mapped_sgs);
 
-<<<<<<< HEAD
 		if (req->ztrb) {
 			trb = req->ztrb;
 			if ((event->status & DEPEVT_STATUS_LST) &&
@@ -2561,7 +2560,7 @@ static int dwc3_cleanup_done_reqs(struct dwc3 *dwc, struct dwc3_ep *dep,
 					(trb->ctrl & DWC3_TRB_CTRL_IOC))
 				ret = 1;
 		}
-=======
+
 		/*
 		 * We assume here we will always receive the entire data block
 		 * which we should receive. Meaning, if we program RX to
@@ -2570,7 +2569,6 @@ static int dwc3_cleanup_done_reqs(struct dwc3 *dwc, struct dwc3_ep *dep,
 		 * gadget driver for further processing.
 		 */
 		req->request.actual += req->request.length - count;
->>>>>>> 020d1c5... Linux 3.10.105
 		dwc3_gadget_giveback(dep, req, status);
 
 		/* EP possibly disabled during giveback? */

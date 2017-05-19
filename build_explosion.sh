@@ -40,11 +40,11 @@ fi
 DEVICE="$1"
 
 #Variable
-VERSION="R03"
-USUARIO="ortizpablo199"
-DIRECTORIO="/home/$USUARIO/android_kernel_wingtech_msm8916"
-KERNELT="/home/$USUARIO/android_kernel_wingtech_msm8916/arch/arm/boot/zImage"
-ZIP="/home/$USUARIO/android_kernel_wingtech_msm8916/zip"
+VERSION="R12"
+USUARIO="carlos"
+DIRECTORIO="/home/$USUARIO/kernel_motorola_msm8916"
+KERNELT="/home/$USUARIO/kernel_motorola_msm8916/arch/arm/boot/zImage"
+ZIP="/home/$USUARIO/kernel_motorola_msm8916/zip"
 
 #!/bin/bash
 BUILD_START=$(date +"%s")
@@ -67,7 +67,7 @@ echo -e "**********************************************$nocol"
 echo -e "Initial defconfig"
 make ARCH=arm "$DEVICE"_defconfig
 echo -e "Building kernel"
-make -j8 ARCH=arm CROSS_COMPILE=~/arm-eabi-4.9/bin/arm-eabi-
+make -j8 ARCH=arm CROSS_COMPILE=~/arm-eabi-5.3/bin/arm-eabi-
 
 echo -e "$red Compress zip"
 rm -rvf $ZIP/tools/zImage

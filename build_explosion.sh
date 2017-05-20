@@ -45,6 +45,7 @@ USUARIO="carlos"
 DIRECTORIO="/home/$USUARIO/kernel_motorola_msm8916"
 KERNELT="/home/$USUARIO/kernel_motorola_msm8916/arch/arm/boot/zImage"
 ZIP="/home/$USUARIO/kernel_motorola_msm8916/zip"
+WLAN="/home/$USUARIO/kernel_motorola_msm8916/drivers/staging/prima/wlan.ko"
 
 #!/bin/bash
 BUILD_START=$(date +"%s")
@@ -60,7 +61,7 @@ make clean && make mrproper
 
 #Configurando kernel
 export KBUILD_BUILD_USER="CarlosArriaga"
-export KBUILD_BUILD_HOST="xda-developers"
+export KBUILD_BUILD_HOST="EroticHost"
 echo -e "$yellow**********************************************"
 echo "       Building Explosion Kernel For "$DEVICE"    "
 echo -e "**********************************************$nocol"
@@ -71,7 +72,9 @@ make -j8 ARCH=arm CROSS_COMPILE=~/arm-eabi-5.3/bin/arm-eabi-
 
 echo -e "$red Compress zip"
 rm -rvf $ZIP/tools/zImage
+rm -rvf $ZIP/system/lib/modules/pronto/pronto_wlan.ko
 mv $KERNELT $ZIP/tools
+mv $WLAN $ZIP/system/lib/modules/pronto/pronto_wlan.ko
 rm -f $ZIP/*.zip
 
 cd $ZIP

@@ -16,4 +16,4 @@ cp arch/arm/boot/zImage cwm_flash_zip/tools/
 cp arch/arm/boot/dt.img cwm_flash_zip/tools/
 rm -f arch/arm/boot/squid_kernel.zip
 cd cwm_flash_zip
-zip -r ../arch/arm/boot/ExplosionKernel-surnia-R12.zip ./
+zip -r ../arch/arm/boot/ExplosionKernel-surnia-R15b.zip ./

@@ -40,7 +40,7 @@ fi
 DEVICE="$1"
 
 #Variable
-VERSION="R15"
+VERSION="R16"
 USUARIO="carlos"
 DIRECTORIO="/home/$USUARIO/kernel_motorola_msm8916"
 KERNELT="/home/$USUARIO/kernel_motorola_msm8916/arch/arm/boot/zImage"

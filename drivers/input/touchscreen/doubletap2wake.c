@@ -49,10 +49,7 @@ MODULE_LICENSE("GPLv2");
 
 #define DT2W_PWRKEY_DUR		60
 #define DT2W_FEATHER		150
-#define DT2W_TIME           	700
-
-#define DT2W_OFF 0
-#define DT2W_ON 1
+#define DT2W_TIME           	600
 
 /* Resources */
 int dt2w_switch = DT2W_DEFAULT;
@@ -291,31 +288,11 @@ static ssize_t dt2w_doubletap2wake_show(struct device *dev,
 static ssize_t dt2w_doubletap2wake_dump(struct device *dev,
 		struct device_attribute *attr, const char *buf, size_t count)
 {
-	unsigned int new_dt2w_switch;
+	if (buf[0] >= '0' && buf[0] <= '2' && buf[1] == '\n')
+                if (dt2w_switch != buf[0] - '0')
+		        dt2w_switch = buf[0] - '0';
 
-	if (!sscanf(buf, "%du", &new_dt2w_switch))
-		return -EINVAL;
-
-	if (new_dt2w_switch == dt2w_switch)
-		return count;
-
-	switch (new_dt2w_switch) {
-		case DT2W_OFF :
-		case DT2W_ON :
-			dt2w_switch = new_dt2w_switch;
-			/* through 'adb shell' or by other means, if the toggle
-			 * is done several times, 0-to-1, 1-to-0, we need to
-			 * inform the toggle correctly
-			 */
-			pr_info("[dump_dt2w]: DoubleTap2Wake toggled. | "
-					"dt2w='%d' \n", dt2w_switch);
-			return count;
-		default:
-			return -EINVAL;
-	}
-
-	/* We should never get here */
-	return -EINVAL;
+	return count;
 }
 
 static DEVICE_ATTR(doubletap2wake, (S_IWUSR|S_IRUGO),

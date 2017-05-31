@@ -19,6 +19,7 @@ assert(getprop("ro.product.device") == "surnia" ||
        getprop("ro.product.device") == "osprey_cdma" ||
        getprop("ro.product.device") == "osprey_udstv" ||
        getprop("ro.product.device") == "harpia" ||
+       getprop("ro.product.device") == "harpia_retail" ||
        getprop("ro.product.device") == "merlin" ||
        getprop("ro.product.device") == "lux" ||
        abort("This package is for device: surnia,osprey,harpia,merlin,lux; this device is " +

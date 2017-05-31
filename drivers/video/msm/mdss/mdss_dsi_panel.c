@@ -34,6 +34,8 @@
 #include <linux/input/doubletap2wake.h>
 #endif
 
+#include <linux/display_state.h>
+
 #define MDSS_PANEL_DEFAULT_VER 0xffffffffffffffff
 #define MDSS_PANEL_UNKNOWN_NAME "unknown"
 #define DT_CMD_HDR 6
@@ -49,6 +51,13 @@
 #define DEFAULT_MDP_TRANSFER_TIME 14000
 
 #define DCS_CMD_GET_POWER_MODE 0x0A    /* get power_mode */
+
+bool display_on = true;
+
+bool is_display_on()
+{
+	return display_on;
+}
 
 DEFINE_LED_TRIGGER_GLOBAL(bl_led_trigger);
 
@@ -842,6 +851,7 @@ static int mdss_dsi_panel_pre_on(struct mdss_panel_data *pdata)
 		return -EINVAL;
 	}
 
+	display_on = true;
 	lazyplug_enter_lazy(false);
 
 	pinfo = &pdata->panel_info;
@@ -991,6 +1001,7 @@ static int mdss_dsi_panel_off(struct mdss_panel_data *pdata)
 		mdss_dsi_panel_cmds_send(ctrl, &ctrl->off_cmds);
 
 	mdss_dsi_panel_off_in_prog_notify(pdata, pinfo);
+	display_on = false;
 	lazyplug_enter_lazy(true);
 
 end:

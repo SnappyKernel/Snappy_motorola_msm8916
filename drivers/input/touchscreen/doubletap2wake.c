@@ -52,7 +52,7 @@ MODULE_LICENSE("GPLv2");
 #define DT2W_TIME           	700
 
 #define DT2W_OFF 0
-#define DT2W_ON 2
+#define DT2W_ON 1
 
 /* Resources */
 int dt2w_switch = DT2W_DEFAULT;

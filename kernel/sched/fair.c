@@ -1246,7 +1246,7 @@ unsigned int max_task_load(void)
 }
 
 /* Use this knob to turn on or off HMP-aware task placement logic */
-unsigned int __read_mostly sched_enable_hmp = 1;
+unsigned int __read_mostly sched_enable_hmp = 0;
 
 /* A cpu can no longer accomodate more tasks if:
  *
@@ -1259,7 +1259,7 @@ unsigned int __read_mostly sysctl_sched_spill_nr_run = 10;
  * Control whether or not individual CPU power consumption is used to
  * guide task placement.
  */
-unsigned int __read_mostly sysctl_sched_enable_power_aware = 1;
+unsigned int __read_mostly sched_enable_power_aware = 0;
 
 /*
  * This specifies the maximum percent power difference between 2

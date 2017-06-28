@@ -1650,7 +1650,18 @@ void page_cache_async_readahead(struct address_space *mapping,
 				unsigned long size);
 
 unsigned long max_sane_readahead(unsigned long nr);
+<<<<<<< HEAD
+=======
+unsigned long ra_submit(struct file_ra_state *ra,
+			struct address_space *mapping,
+			struct file *filp);
 
+extern unsigned long stack_guard_gap;
+<<<<<<< HEAD
+>>>>>>> 51915c7... Linux 3.10.107
+
+=======
+>>>>>>> 626381f... Linux 3.10.107
 /* Generic expand stack which grows the stack according to GROWS{UP,DOWN} */
 extern int expand_stack(struct vm_area_struct *vma, unsigned long address);
 

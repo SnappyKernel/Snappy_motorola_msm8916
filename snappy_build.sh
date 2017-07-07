@@ -58,7 +58,7 @@ nocol='\033[0m'
 
 #Borrando Basura
 echo -e "Clean Shit"
-make clean && make mrproper
+#make clean && make mrproper
 
 #Configurando kernel
 export KBUILD_BUILD_USER="CarlosArriaga"

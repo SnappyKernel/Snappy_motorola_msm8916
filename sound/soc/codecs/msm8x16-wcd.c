@@ -569,7 +569,7 @@ int msm8x16_wcd_write(struct snd_soc_codec *codec, unsigned int reg,
 		printk_ratelimited(KERN_ERR "write 0x%02x while offline\n",
 				reg);
 		return -ENODEV;
-	} else
+	}
 #ifdef CONFIG_SOUND_CONTROL_HAX_3_GPL
 		if (!snd_ctrl_enabled)
 			return __msm8x16_wcd_reg_write(codec, reg, (u8)value);

@@ -71,7 +71,7 @@ echo -e "**********************************************$nocol"
 echo -e "Initial defconfig"
 make ARCH=arm "$DEVICE"_defconfig
 echo -e "Building kernel"
-make -j8 ARCH=arm CROSS_COMPILE=~/arm-eabi-5.3/bin/arm-eabi-
+make -j8 ARCH=arm CROSS_COMPILE=~/arm-eabi-6.0/bin/arm-eabi-
 
 echo -e "$red Compress zip"
 rm -rvf $ZIP/tools/zImage
@@ -81,7 +81,7 @@ mv $WLAN $ZIP/system/lib/modules/pronto/pronto_wlan.ko
 rm -f $ZIP/*.zip
 
 cd $ZIP
-DATE="$(date +'%d/%m/%Y')"
+DATE="$(date +'%d%m%Y')"
 zip -r $NAME-$VERSION-$DATE-$DEVICE *
 cd
 BUILD_END=$(date +"%s")

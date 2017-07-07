@@ -151,11 +151,8 @@ void unix_notinflight(struct user_struct *user, struct file *fp)
 
 	if (s) {
 		struct unix_sock *u = unix_sk(s);
-
-<<<<<<< HEAD
-=======
+		
 		BUG_ON(!atomic_long_read(&u->inflight));
->>>>>>> a37031a... Linux 3.10.106
 		BUG_ON(list_empty(&u->link));
 		if (atomic_long_dec_and_test(&u->inflight))
 			list_del_init(&u->link);

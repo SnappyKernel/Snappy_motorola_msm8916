@@ -1,8 +1,8 @@
  #
- # Copyright � 2017,  Sultan Qasim Khan <sultanqasim@gmail.com> 	
- # Copyright � 2017,  Zeeshan Hussain <zeeshanhussain12@gmail.com> 	      
- # Copyright � 2017,  Varun Chitre  <varun.chitre15@gmail.com>	
- # Copyright � 2017,  Carlos Arriaga  <CarlosArriagaCM@gmail.com>	
+ # Copyright � 2017,  Sultan Qasim Khan <sultanqasim@gmail.com>
+ # Copyright � 2017,  Zeeshan Hussain <zeeshanhussain12@gmail.com>
+ # Copyright � 2017,  Varun Chitre  <varun.chitre15@gmail.com>
+ # Copyright � 2017,  Carlos Arriaga  <CarlosArriagaCM@gmail.com>
  #
  # Custom build script
  #
@@ -23,9 +23,9 @@ usage (){
         echo "||";
         echo "||     Use: $0 DEVICE";
         echo "||";
-        echo "||     Example: $0 wt88047";
+        echo "||     Example: $0 surnia";
         echo "||";
-        echo "|| [Device] = Device codename: wt88047";
+        echo "|| [Device] = Device codename: surnia, osprey, harpia, etc.";
         echo "||";
         echo "|| $1"
         exit 1;
@@ -40,7 +40,8 @@ fi
 DEVICE="$1"
 
 #Variable
-VERSION="R19"
+NAME="snappy"
+VERSION="STABLE"
 USUARIO="desarrollov6"
 DIRECTORIO="/home/$USUARIO/kernel_motorola_msm8916"
 KERNELT="/home/$USUARIO/kernel_motorola_msm8916/arch/arm/boot/zImage"
@@ -63,7 +64,9 @@ make clean && make mrproper
 export KBUILD_BUILD_USER="CarlosArriaga"
 export KBUILD_BUILD_HOST="EroticHost"
 echo -e "$yellow**********************************************"
-echo "       Building Explosion Kernel For "$DEVICE"    "
+echo -e "Welcome! to the new era"
+echo -e "Building "$NAME" Kernel For "$DEVICE""
+echo -e "Powered by Carlos Arriaga"
 echo -e "**********************************************$nocol"
 echo -e "Initial defconfig"
 make ARCH=arm "$DEVICE"_defconfig
@@ -78,7 +81,8 @@ mv $WLAN $ZIP/system/lib/modules/pronto/pronto_wlan.ko
 rm -f $ZIP/*.zip
 
 cd $ZIP
-zip -r Explosion-$VERSION-$DEVICE *
+DATE="$(date +'%d/%m/%Y')"
+zip -r $NAME-$VERSION-$DATE-$DEVICE *
 cd
 BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))

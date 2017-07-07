@@ -946,39 +946,23 @@ static int pm8921_remove(struct platform_device *pdev)
 {
 	struct pm8xxx_drvdata *drvdata;
 	struct pm8921 *pmic = NULL;
-	int i;
 
 	drvdata = platform_get_drvdata(pdev);
 	if (drvdata)
 		pmic = drvdata->pm_chip_data;
 	if (pmic) {
-<<<<<<< HEAD
-		if (pmic->dev)
-			mfd_remove_devices(pmic->dev);
-		if (pmic->irq_chip)
-			pm8xxx_irq_exit(pmic->irq_chip);
-		if (pmic->mfd_regulators) {
-			for (i = 0; i < ARRAY_SIZE(regulator_data); i++)
-				mutex_destroy(&regulator_data[i].pc_lock);
-			for (i = 0; i < ARRAY_SIZE(pm8917_regulator_data); i++)
-				mutex_destroy(
-					&pm8917_regulator_data[i].pc_lock);
-		}
-		kfree(pmic->mfd_regulators);
-		kfree(pmic->regulator_cdata);
-		kfree(pmic);
-=======
 		mfd_remove_devices(pmic->dev);
 		if (pmic->irq_chip) {
 			pm8xxx_irq_exit(pmic->irq_chip);
 			pmic->irq_chip = NULL;
 		}
->>>>>>> a37031a... Linux 3.10.106
 	}
 	platform_set_drvdata(pdev, NULL);
+	kfree(pmic);
 
 	return 0;
 }
+
 
 static struct platform_driver pm8921_driver = {
 	.probe		= pm8921_probe,

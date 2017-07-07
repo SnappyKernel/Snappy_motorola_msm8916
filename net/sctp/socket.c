@@ -6730,10 +6730,6 @@ static int sctp_wait_for_sndbuf(struct sctp_association *asoc, long *timeo_p,
 		 */
 		sctp_release_sock(sk);
 		current_timeo = schedule_timeout(current_timeo);
-<<<<<<< HEAD
-		BUG_ON(sk != asoc->base.sk);
-=======
->>>>>>> a37031a... Linux 3.10.106
 		sctp_lock_sock(sk);
 
 		*timeo_p = current_timeo;

@@ -2110,17 +2110,8 @@ static int acct_stack_growth(struct vm_area_struct *vma, unsigned long size, uns
  */
 int expand_upwards(struct vm_area_struct *vma, unsigned long address)
 {
-<<<<<<< HEAD
-=======
-	struct vm_area_struct *next;
-	unsigned long gap_addr;
-<<<<<<< HEAD
->>>>>>> 51915c7... Linux 3.10.107
+	
 	int error;
-=======
-	int error = 0;
->>>>>>> 626381f... Linux 3.10.107
-
 	if (!(vma->vm_flags & VM_GROWSUP))
 		return -EFAULT;
 
@@ -2153,23 +2144,14 @@ int expand_upwards(struct vm_area_struct *vma, unsigned long address)
 	 * is required to hold the mmap_sem in read mode.  We need the
 	 * anon_vma lock to serialize against concurrent expand_stacks.
 	 */
-<<<<<<< HEAD
+
 	if (address < PAGE_ALIGN(address+4))
 		address = PAGE_ALIGN(address+4);
 	else {
-=======
-<<<<<<< HEAD
-	address &= PAGE_MASK;
-	address += PAGE_SIZE;
-	if (!address) {
->>>>>>> 51915c7... Linux 3.10.107
 		vma_unlock_anon_vma(vma);
 		return -ENOMEM;
 	}
 	error = 0;
-=======
-	vma_lock_anon_vma(vma);
->>>>>>> 626381f... Linux 3.10.107
 
 	/* Somebody else might have raced and expanded it already */
 	if (address > vma->vm_end) {

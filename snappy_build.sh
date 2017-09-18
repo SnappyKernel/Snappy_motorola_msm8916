@@ -1,7 +1,4 @@
  #
- # Copyright � 2017,  Sultan Qasim Khan <sultanqasim@gmail.com>
- # Copyright � 2017,  Zeeshan Hussain <zeeshanhussain12@gmail.com>
- # Copyright � 2017,  Varun Chitre  <varun.chitre15@gmail.com>
  # Copyright � 2017,  Carlos Arriaga  <CarlosArriagaCM@gmail.com>
  #
  # Custom build script
@@ -41,12 +38,12 @@ DEVICE="$1"
 
 #Variable
 NAME="snappy"
-VERSION="STABLE"
-USUARIO="desarrollov6"
-DIRECTORIO="/home/$USUARIO/kernel_motorola_msm8916"
-KERNELT="/home/$USUARIO/kernel_motorola_msm8916/arch/arm/boot/zImage"
-ZIP="/home/$USUARIO/kernel_motorola_msm8916/zip"
-WLAN="/home/$USUARIO/kernel_motorola_msm8916/drivers/staging/prima/wlan.ko"
+VERSION="oreo"
+USUARIO="doughnutirish"
+DIRECTORIO="/home/$USUARIO/Snappy_motorola_msm8916"
+KERNELT="/home/$USUARIO/Snappy_motorola_msm8916/arch/arm/boot/zImage"
+ZIP="/home/$USUARIO/Snappy_motorola_msm8916/zip"
+WLAN="/home/$USUARIO/Snappy_motorola_msm8916/drivers/staging/prima/wlan.ko"
 
 #!/bin/bash
 BUILD_START=$(date +"%s")
@@ -58,7 +55,7 @@ nocol='\033[0m'
 
 #Borrando Basura
 echo -e "Clean Shit"
-#make clean && make mrproper
+make clean && make mrproper
 
 #Configurando kernel
 export KBUILD_BUILD_USER="CarlosArriaga"
